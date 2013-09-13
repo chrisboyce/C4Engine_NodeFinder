@@ -92,16 +92,16 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <CustomBuildStep>
       <Message>Copying executable</Message>
-      <Command>xcopy "$(OutDir)$(TargetFileName)" ..\..\..\Plugins\Tools /Y</Command>
-      <Outputs>..\..\..\Plugins\Tools\$(TargetFileName)</Outputs>
+      <Command>xcopy "$(OutDir)$(TargetFileName)" ..\..\..\..\Plugins\Tools\Editor /Y</Command>
+      <Outputs>..\..\..\Plugins\Tools\Editor\$(TargetFileName)</Outputs>
       <Inputs>$(OutDir)$(TargetFileName)</Inputs>
     </CustomBuildStep>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\EngineCode</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\EngineCode;..\..\..\..\PluginCode</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>C4TEXTURE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(OutDir)C4Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(OutDir)C4Engine.lib;$(OutDir)WorldEditor.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)NodeFinder.dll</OutputFile>
       <OptimizeReferences>
       </OptimizeReferences>
@@ -198,18 +198,21 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-	  <ClCompile Include="..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPage.cpp" />
-	  <ClCompile Include="..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPlugin.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-	    <ClInclude Include="..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPage.h" />
-	    <ClInclude Include="..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPlugin.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.vcxproj">
+    <ProjectReference Include="..\..\Engine\Engine.vcxproj">
       <Project>{81de5818-1cca-46e6-93ef-e23254643fbd}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\..\WorldEditor\WorldEditor.vcxproj">
+      <Project>{41b45cbd-1652-467b-8bef-e8a549efaaa6}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPage.h" />
+    <ClInclude Include="..\..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPlugin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPage.cpp" />
+    <ClCompile Include="..\..\..\..\PluginCode\Gitanic\NodeFinder\NodeFinderPlugin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
