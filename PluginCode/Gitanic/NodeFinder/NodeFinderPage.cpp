@@ -1,3 +1,9 @@
+/*
+Copyright (C) 2013 Chris Boyce <chris@gitanic.com>
+
+See the LISCENSE.txt file at the top-level directory of 
+this distribution and at http://opensource.org/licenses/MIT
+*/
 #include "NodeFinderPage.h"
 
 using namespace C4;
